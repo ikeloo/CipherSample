@@ -8,6 +8,11 @@ import com.cipher.util.CipherUtil;
 import com.cipher.util.RSAJavaToCSharp;
 import com.cipher.util.TranscodeUtil;
 
+/**
+ * 秘钥测试类
+ * @author lukai
+ *
+ */
 public class CipherTest {
 
     String rsaPrivateKey;
