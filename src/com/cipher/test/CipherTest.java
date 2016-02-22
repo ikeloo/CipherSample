@@ -14,7 +14,7 @@ import com.cipher.util.TranscodeUtil;
  *
  */
 public class CipherTest {
-
+	//ttk
     String rsaPrivateKey;
     String rsaPublicKey;
     String aesKeyClient;
