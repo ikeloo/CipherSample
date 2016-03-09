@@ -3,6 +3,7 @@ package com.cipher.util;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.Key;
@@ -147,8 +148,19 @@ public class CipherUtil {
      * @param algorithm 算法类型 
      * @param data 要加密的字符串 
      * @return 返回加密后的摘要信息 
+     * @throws UnsupportedEncodingException 
      */  
-    private static String encryptEncode(String algorithm, String data) {
+    private static String encryptEncode(String algorithm, String data, String encoding) throws UnsupportedEncodingException {
+        try {
+            MessageDigest md = MessageDigest.getInstance(algorithm);
+            return TranscodeUtil.byteArrayToHexStr(md.digest(data.getBytes(encoding)));
+        } catch(NoSuchAlgorithmException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+    
+    private static String encryptEncode(String algorithm, String data) throws UnsupportedEncodingException {
         try {
             MessageDigest md = MessageDigest.getInstance(algorithm);
             return TranscodeUtil.byteArrayToHexStr(md.digest(data.getBytes()));
@@ -179,8 +191,13 @@ public class CipherUtil {
      * 使用MD5加密（字符串）
      * @param data 要加密的字符串 
      * @return 返回加密后的信息 
+     * @throws UnsupportedEncodingException 
      */  
-    public static String MD5Encode(String data) {
+    public static String MD5Encode(String data, String encoding) throws UnsupportedEncodingException {
+        return encryptEncode(ALGORITHM_MD5, data, encoding);
+    }
+    
+    public static String MD5Encode(String data) throws UnsupportedEncodingException {
         return encryptEncode(ALGORITHM_MD5, data);
     }
     
@@ -197,9 +214,10 @@ public class CipherUtil {
      * 使用SHA加密（字符串）
      * @param data 要加密的字符串 
      * @return 返回加密后的信息 
+     * @throws UnsupportedEncodingException 
      */  
-    public static String SHAEncode(String data) {
-        return encryptEncode(ALGORITHM_SHA, data);
+    public static String SHAEncode(String data, String encoding) throws UnsupportedEncodingException {
+        return encryptEncode(ALGORITHM_SHA, data, encoding);
     }
     
     /** 
