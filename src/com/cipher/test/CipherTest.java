@@ -21,7 +21,7 @@ public class CipherTest {
     String aesKeyServer;
     
     /**
-     * 初始化RSA秘钥4
+     * 初始化RSA秘钥6
      */
     public void initRSA() {
         Map<String, Object> keyMap = CipherUtil.initRSAKey(1024);
