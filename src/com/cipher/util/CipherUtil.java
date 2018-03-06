@@ -51,7 +51,12 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.PBEParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
-  
+
+/**
+ * 加密算法公共类
+ * @author ike
+ *
+ */
 public class CipherUtil {
   
     /** 
