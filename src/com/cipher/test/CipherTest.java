@@ -13,6 +13,11 @@ import com.cipher.util.CipherUtil;
 import com.cipher.util.RSAJavaToCSharp;
 import com.cipher.util.TranscodeUtil;
 
+/**
+ * 测试用类
+ * @author ike
+ *
+ */
 public class CipherTest {
 	// develop change pc
     String rsaPrivateKey;
